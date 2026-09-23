@@ -1,12 +1,12 @@
 # TP Final - CRUD de Publicaciones
 
-## Cómo correrlo
+## Conexión con Supabase
 
-1. Crear la tabla en Supabase con el contenido de `tabla.sql` (SQL Editor del panel).
-2. Copiar `.env.example` a `.env` y completar con la URL y la anon key del proyecto
-   (Project Settings → API en el panel de Supabase).
-3. `npm install`
-4. `npm run dev`
+La aplicación se conecta con Supabase desde el archivo `src/services/supabaseClient.js`. Para realizar esta conexión se utiliza `createClient` de la librería `@supabase/supabase-js`.
+
+La URL del proyecto y la clave de acceso se obtienen desde el archivo `.env`, mediante las variables `VITE_SUPABASE_URL` y `VITE_SUPABASE_ANON_KEY`. De esta manera, la aplicación puede comunicarse con la base de datos de Supabase.
+
+Las operaciones sobre la tabla `publicaciones` se encuentran separadas en `src/services/publicaciones.js`. Esto permite que el componente `Publicaciones.jsx` se encargue principalmente de la interfaz, mientras que el archivo de servicios se encarga de realizar las consultas y modificaciones en la base de datos.
 
 ## Las cuatro funciones de `src/services/publicaciones.js`
 
