@@ -1,0 +1,195 @@
+.publicaciones {
+  max-width: 680px;
+  margin: 0 auto;
+  padding: 2.5rem 1.5rem;
+  font-family: "Segoe UI", Roboto, Arial, sans-serif;
+  color: #1f2933;
+}
+
+.publicaciones h1 {
+  font-size: 1.6rem;
+  font-weight: 600;
+  margin-bottom: 0.25rem;
+  color: #1f2933;
+  letter-spacing: -0.01em;
+}
+
+.subtitulo {
+  color: #616e7c;
+  margin-top: 0;
+  margin-bottom: 2rem;
+  font-size: 0.9rem;
+}
+
+/* --- formulario --- */
+
+.formulario {
+  background: #ffffff;
+  border: 1px solid #d9e2ec;
+  border-radius: 6px;
+  padding: 1.75rem;
+  margin-bottom: 2.5rem;
+  box-shadow: 0 1px 2px rgba(31, 41, 51, 0.04);
+}
+
+.formulario h2 {
+  font-size: 1.05rem;
+  font-weight: 600;
+  margin-top: 0;
+  margin-bottom: 1.25rem;
+  color: #1f2933;
+  padding-bottom: 0.75rem;
+  border-bottom: 1px solid #edf0f3;
+}
+
+.campo {
+  margin-bottom: 1.1rem;
+}
+
+.campo label {
+  display: block;
+  font-size: 0.78rem;
+  font-weight: 600;
+  margin-bottom: 0.4rem;
+  color: #3e4c59;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+
+.campo input,
+.campo textarea {
+  width: 100%;
+  padding: 0.55rem 0.7rem;
+  border: 1px solid #cbd2d9;
+  border-radius: 4px;
+  font-size: 0.92rem;
+  font-family: inherit;
+  background: #ffffff;
+  color: #1f2933;
+  box-sizing: border-box;
+}
+
+.campo textarea {
+  min-height: 90px;
+  resize: vertical;
+}
+
+.campo input:focus,
+.campo textarea:focus {
+  outline: none;
+  border-color: #325d88;
+  box-shadow: 0 0 0 3px rgba(50, 93, 136, 0.12);
+}
+
+.accionesFormulario {
+  display: flex;
+  gap: 0.6rem;
+  margin-top: 1.4rem;
+}
+
+.boton {
+  border: 1px solid transparent;
+  border-radius: 4px;
+  padding: 0.55rem 1.2rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 120ms ease, border-color 120ms ease;
+}
+
+.botonPrimario {
+  background: #1f2933;
+  color: #ffffff;
+}
+
+.botonPrimario:hover {
+  background: #323f4b;
+}
+
+.botonSecundario {
+  background: #ffffff;
+  color: #3e4c59;
+  border-color: #cbd2d9;
+}
+
+.botonSecundario:hover {
+  background: #f5f7fa;
+}
+
+.botonPeligro {
+  background: #ffffff;
+  color: #b91c1c;
+  border-color: #f1cbcb;
+}
+
+.botonPeligro:hover {
+  background: #fdf2f2;
+}
+
+/* --- listado --- */
+
+.tituloSeccion {
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: #7b8794;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  margin-bottom: 1rem;
+}
+
+.mensajeVacio,
+.mensajeCargando {
+  color: #7b8794;
+  font-size: 0.9rem;
+}
+
+.listaPublicaciones {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.tarjetaPublicacion {
+  background: #ffffff;
+  border: 1px solid #d9e2ec;
+  border-radius: 6px;
+  padding: 1.1rem 1.3rem;
+}
+
+.tarjetaPublicacion h3 {
+  margin: 0 0 0.4rem;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #1f2933;
+}
+
+.tarjetaPublicacion p {
+  margin: 0 0 0.6rem;
+  color: #3e4c59;
+  line-height: 1.55;
+  font-size: 0.92rem;
+}
+
+.fecha {
+  display: block;
+  color: #9aa5b1;
+  font-size: 0.76rem;
+  margin-bottom: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+}
+
+.accionesTarjeta {
+  display: flex;
+  gap: 0.5rem;
+  padding-top: 0.75rem;
+  border-top: 1px solid #edf0f3;
+}
+
+.accionesTarjeta .boton {
+  padding: 0.4rem 0.9rem;
+  font-size: 0.78rem;
+}
