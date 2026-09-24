@@ -1,4 +1,5 @@
 # TP Final - CRUD de Publicaciones
+Alumna: Arias Tresita de Luján
 
 ## Conexión con Supabase
 

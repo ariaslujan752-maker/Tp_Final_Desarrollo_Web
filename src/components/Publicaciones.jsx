@@ -5,85 +5,57 @@ import {
   actualizarPublicacion,
   eliminarPublicacion,
 } from "../services/publicaciones";
+import PublicacionForm from "./PublicacionForm";
 import estilos from "./Publicaciones.module.css";
-
-const FORM_VACIO = { titulo: "", contenido: "" };
 
 export default function Publicaciones() {
   const [lista, setLista] = useState([]);
   const [cargando, setCargando] = useState(true);
-  const [formulario, setFormulario] = useState(FORM_VACIO);
-  const [publicacionEditando, setPublicacionEditando] = useState(null); // null = modo "crear"
+  const [editando, setEditando] = useState(null); // null = modo "crear"
 
   async function cargarLista() {
-    setCargando(true);
-    const { data, error } = await obtenerPublicaciones();
-    if (error) {
-      alert(error.message);
-    } else {
-      setLista(data);
-    }
-    setCargando(false);
+  setCargando(true);
+
+  const { data, error } = await obtenerPublicaciones();
+
+  if (error) {
+    alert(error.message);
+  } else {
+    setLista(data);
+  }
+
+  setCargando(false);
+
   }
 
   useEffect(() => {
     cargarLista();
   }, []);
 
-  function handleChange(e) {
-    const { name, value } = e.target;
-    setFormulario((prev) => ({ ...prev, [name]: value }));
-  }
+  
+  async function guardar(datos) {
+    const { error } = editando
+      ? await actualizarPublicacion(editando.id, datos)
+      : await crearPublicacion(datos);
 
-  function resetFormulario() {
-    setFormulario(FORM_VACIO);
-    setPublicacionEditando(null);
-  }
-
-  async function handleSubmit(e) {
-    e.preventDefault();
-
-    if (!formulario.titulo.trim() || !formulario.contenido.trim()) {
-      alert("Completá título y contenido.");
-      return;
-    }
-
-    if (publicacionEditando) {
-      const { error } = await actualizarPublicacion(publicacionEditando.id, formulario);
-      if (error) return alert(error.message);
-    } else {
-      const { error } = await crearPublicacion(formulario);
-      if (error) return alert(error.message);
+    if (error) {
+      alert(error.message);
+      return false;
     }
 
     await cargarLista();
-    resetFormulario();
-  }
-
-  function handleEditar(publicacion) {
-    setPublicacionEditando(publicacion);
-    setFormulario({ titulo: publicacion.titulo, contenido: publicacion.contenido });
-  }
-
-  function handleCancelar() {
-    resetFormulario();
+    setEditando(null);
+    return true;
   }
 
   async function handleBorrar(id) {
-    const confirmar = window.confirm("¿Seguro que querés borrar esta publicación?");
-    if (!confirmar) return;
+    if (!window.confirm("¿Seguro que querés borrar esta publicación?")) return;
 
     const { error } = await eliminarPublicacion(id);
-    if (error) {
-      alert(error.message);
-      return;
-    }
+    if (error) return alert(error.message);
 
     setLista((prev) => prev.filter((p) => p.id !== id));
-
-    if (publicacionEditando?.id === id) {
-      resetFormulario();
-    }
+    if (editando?.id === id) setEditando(null);
   }
 
   return (
@@ -91,44 +63,11 @@ export default function Publicaciones() {
       <h1>Novedades de la tienda</h1>
       <p className={estilos.subtitulo}>Anuncios, promociones y novedades para el local.</p>
 
-      <form className={estilos.formulario} onSubmit={handleSubmit}>
-        <h2>{publicacionEditando ? "Editar publicación" : "Nueva publicación"}</h2>
-
-        <div className={estilos.campo}>
-          <label htmlFor="titulo">Título</label>
-          <input
-            id="titulo"
-            name="titulo"
-            value={formulario.titulo}
-            onChange={handleChange}
-          />
-        </div>
-
-        <div className={estilos.campo}>
-          <label htmlFor="contenido">Contenido</label>
-          <textarea
-            id="contenido"
-            name="contenido"
-            value={formulario.contenido}
-            onChange={handleChange}
-          />
-        </div>
-
-        <div className={estilos.accionesFormulario}>
-          <button type="submit" className={`${estilos.boton} ${estilos.botonPrimario}`}>
-            {publicacionEditando ? "Guardar cambios" : "Crear"}
-          </button>
-          {publicacionEditando && (
-            <button
-              type="button"
-              className={`${estilos.boton} ${estilos.botonSecundario}`}
-              onClick={handleCancelar}
-            >
-              Cancelar
-            </button>
-          )}
-        </div>
-      </form>
+      <PublicacionForm
+        valoresIniciales={editando}
+        onGuardar={guardar}
+        onCancelar={() => setEditando(null)}
+      />
 
       <h2 className={estilos.tituloSeccion}>Listado</h2>
 
@@ -148,7 +87,7 @@ export default function Publicaciones() {
             <div className={estilos.accionesTarjeta}>
               <button
                 className={`${estilos.boton} ${estilos.botonSecundario}`}
-                onClick={() => handleEditar(publicacion)}
+                onClick={() => setEditando(publicacion)}
               >
                 Editar
               </button>

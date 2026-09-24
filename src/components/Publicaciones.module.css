@@ -21,113 +21,6 @@
   font-size: 0.9rem;
 }
 
-/* --- formulario --- */
-
-.formulario {
-  background: #ffffff;
-  border: 1px solid #d9e2ec;
-  border-radius: 6px;
-  padding: 1.75rem;
-  margin-bottom: 2.5rem;
-  box-shadow: 0 1px 2px rgba(31, 41, 51, 0.04);
-}
-
-.formulario h2 {
-  font-size: 1.05rem;
-  font-weight: 600;
-  margin-top: 0;
-  margin-bottom: 1.25rem;
-  color: #1f2933;
-  padding-bottom: 0.75rem;
-  border-bottom: 1px solid #edf0f3;
-}
-
-.campo {
-  margin-bottom: 1.1rem;
-}
-
-.campo label {
-  display: block;
-  font-size: 0.78rem;
-  font-weight: 600;
-  margin-bottom: 0.4rem;
-  color: #3e4c59;
-  text-transform: uppercase;
-  letter-spacing: 0.03em;
-}
-
-.campo input,
-.campo textarea {
-  width: 100%;
-  padding: 0.55rem 0.7rem;
-  border: 1px solid #cbd2d9;
-  border-radius: 4px;
-  font-size: 0.92rem;
-  font-family: inherit;
-  background: #ffffff;
-  color: #1f2933;
-  box-sizing: border-box;
-}
-
-.campo textarea {
-  min-height: 90px;
-  resize: vertical;
-}
-
-.campo input:focus,
-.campo textarea:focus {
-  outline: none;
-  border-color: #325d88;
-  box-shadow: 0 0 0 3px rgba(50, 93, 136, 0.12);
-}
-
-.accionesFormulario {
-  display: flex;
-  gap: 0.6rem;
-  margin-top: 1.4rem;
-}
-
-.boton {
-  border: 1px solid transparent;
-  border-radius: 4px;
-  padding: 0.55rem 1.2rem;
-  font-size: 0.85rem;
-  font-weight: 600;
-  cursor: pointer;
-  transition: background-color 120ms ease, border-color 120ms ease;
-}
-
-.botonPrimario {
-  background: #1f2933;
-  color: #ffffff;
-}
-
-.botonPrimario:hover {
-  background: #323f4b;
-}
-
-.botonSecundario {
-  background: #ffffff;
-  color: #3e4c59;
-  border-color: #cbd2d9;
-}
-
-.botonSecundario:hover {
-  background: #f5f7fa;
-}
-
-.botonPeligro {
-  background: #ffffff;
-  color: #b91c1c;
-  border-color: #f1cbcb;
-}
-
-.botonPeligro:hover {
-  background: #fdf2f2;
-}
-
-/* --- listado --- */
-
 .tituloSeccion {
   font-size: 0.78rem;
   font-weight: 700;
@@ -189,7 +82,32 @@
   border-top: 1px solid #edf0f3;
 }
 
-.accionesTarjeta .boton {
+.boton {
+  border: 1px solid transparent;
+  border-radius: 4px;
   padding: 0.4rem 0.9rem;
   font-size: 0.78rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 120ms ease, border-color 120ms ease;
+}
+
+.botonSecundario {
+  background: #ffffff;
+  color: #3e4c59;
+  border-color: #cbd2d9;
+}
+
+.botonSecundario:hover {
+  background: #f5f7fa;
+}
+
+.botonPeligro {
+  background: #ffffff;
+  color: #b91c1c;
+  border-color: #f1cbcb;
+}
+
+.botonPeligro:hover {
+  background: #fdf2f2;
 }
